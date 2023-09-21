@@ -13,7 +13,7 @@
 <body>
     <div class="container">
         <h2>Login</h2>
-        <form action="userlogin" method="POST">
+        <form action="loginUser" method="POST">
             <div class="form-group">
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
@@ -27,10 +27,10 @@
             </div>
             <br>
             <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span>
-            <br>
+            <br><br>
             <button type="submit">Login</button>
         </form>
-        <p>Don't have an account? <a href="register.jsp">Register</a></p>
+        <p>Don't have an account? <a href="Register.jsp">Register</a></p>
                   
     </div>
 </body>

@@ -1,31 +1,59 @@
 package com.codewithpasi.jobconsultants.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.codewithpasi.jobconsultants.dao.LoginDao;
+import com.codewithpasi.jobconsultants.dao.UserManager;
+import com.codewithpasi.jobconsultants.dao.UserManagerImpl;
 import com.codewithpasi.jobconsultants.model.LoginBean;
+import com.codewithpasi.jobconsultants.service.UserService;
 
-public class LoginController extends HttpServlet {
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	String message = "";
+	
+	private UserService getUserService() {
+		return UserService.getUserService();
+	}
       
 	
-    public LoginController() {
+    public UserController() {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String actionType = request.getParameter("actiontype");
+		
+		if (actionType.equals ("login")) {
+			loginUser(request, response);
+		}
+		else if (actionType.equals ("register")) {
+			registerUser(request, response);
+		}
+
+	}
+	
+	private void loginUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	
+	clearMessage();
+	
 	String userName = request.getParameter("username");
 	String password = request.getParameter("password");
 	
@@ -33,11 +61,9 @@ public class LoginController extends HttpServlet {
 	
 	loginBean.setUserName(userName);
 	loginBean.setPassword(password);
-	
-	LoginDao loginDao = new LoginDao();
-	
+		
 	try {
-		String validateUser = loginDao.authenticateUser(loginBean);
+		String validateUser = getUserService().loginUser(loginBean);
 		
 		if(validateUser.equals("Admin_Role")) {
 			System.out.println("Admin Home");
@@ -68,7 +94,7 @@ public class LoginController extends HttpServlet {
 			session.setAttribute("User", userName);	   
 			request.setAttribute(userName, userName);
 			
-			request.getRequestDispatcher("User.jsp").forward(request, response);
+			request.getRequestDispatcher("UserHome.jsp").forward(request, response);
 
 		}
 		else {
@@ -87,7 +113,42 @@ public class LoginController extends HttpServlet {
 		e2.printStackTrace();
 	}
 	
+	}
 	
+	private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		clearMessage();
+		
+		LoginBean loginBean = new LoginBean();
+		loginBean.setfullName(request.getParameter("fullname"));
+		loginBean.setEmail(request.getParameter("email"));
+		loginBean.setUserName(request.getParameter("username"));
+		loginBean.setPassword(request.getParameter("password"));
+
+		try {
+			if(getUserService().registerUser(loginBean)) {
+				
+				message = "Registration Successful!";
+			}
+			else {
+				message = "Failed to register the user!";
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			
+			message = "Operation failed! " +e.getMessage();
+		}
+		
+		request.setAttribute("feedbackmessage", message);
+		RequestDispatcher rd = request.getRequestDispatcher("UserHome.jsp");
+		rd.forward(request, response);
+
+	}
+	
+	
+	private void clearMessage() {
+		
+		message = "";
+		
 	}
 
 }

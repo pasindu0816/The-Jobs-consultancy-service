@@ -5,9 +5,6 @@ import java.sql.SQLException;
 
 public interface DbDriverManager {
 	
-	public static Connection getConnection() throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public Connection getConnection() throws ClassNotFoundException, SQLException;
 
 }
