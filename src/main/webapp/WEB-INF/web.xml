@@ -26,7 +26,15 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>UserController</servlet-name>
-  	<url-pattern>/logoutUser</url-pattern>
+  	<url-pattern>/fetchAllConsultants</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserController</servlet-name>
+  	<url-pattern>/getUserProfile</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>UserController</servlet-name>
+  	<url-pattern>/setAppointment</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>LogoutController</servlet-name>

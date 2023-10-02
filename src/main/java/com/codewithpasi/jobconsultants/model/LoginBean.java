@@ -6,7 +6,12 @@ public class LoginBean {
 	private String fullName;
 	private String email;
 	private String userName;
-	private String password;
+	private String password;	
+	private String specializedCountry;
+	private String availability;
+
+
+	
 	
 	 public int getuserID() {
 			return userID;
@@ -46,6 +51,24 @@ public class LoginBean {
 	
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getCountry() {
+		return specializedCountry;
+	}
+
+	public void setCountry(String specializedCountry) {
+		this.specializedCountry = specializedCountry;
+		
+	}
+	
+	public String getAvailability() {
+		return availability;
+	}
+
+	public void setAvailability(String availability) {
+		this.availability = availability;
+		
 	}
 
 }

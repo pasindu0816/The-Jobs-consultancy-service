@@ -1,23 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix= "tag" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+    <%@ taglib prefix= "tag" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to The Jobs Consultation Centre</title>
-    <link rel="stylesheet" href="css/home.css">
-    <!-- latest compiled and minified CSS -->
+	<meta charset="ISO-8859-1">
+	<title>Consultants</title>
+	<!-- latest compiled and minified CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
 	<!-- latest compiled JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-
 </head>
+<body>
 
-    <body>
-		<header>
+	<header>
 		  <nav class="navbar navbar-expand-lg bg-body-tertiary">
 		  <div class="container-fluid">
 		    <a class="navbar-brand" href="#">The Jobs</a>
@@ -27,10 +24,10 @@
 		    <div class="collapse navbar-collapse" id="navbarNav">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link active" aria-current="page" href="#">Home</a>
+		          <a class="nav-link" href="UserHome.jsp">Home</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="fetchAllConsultants?actiontype=allConsultants">Consultants</a>
+		          <a class="nav-link active" aria-current="page" href="#">Consultants</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="Appointments.jsp">Appointments</a>
@@ -40,28 +37,47 @@
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" style="color: #FE3D3D" href="<%=request.getContextPath()%>/LogoutController">Log out</a>
-		        </li> 
-		        </ul>
+		        </li>
+		      </ul>
 		    </div>
 		  </div>
 		</nav>
 		<br>
-		</header>
-		<h4>Hello, <%= session.getAttribute( "sessionName" ) %> </h4>
-		<div class="home-body">
-			<main>
-	        <h3>Reach our consultants and get your valued service!</h3>
-	        <p>We provide free consultation services to job seekers planning to work abroad.</p>
-	        <p>If you need advice on job opportunities, please schedule an appointment with our consultants.</p>
-	    	</main>
-	    	<img src="consulting.jpg" width="400" height="300">
-	    	<br><br>
-
-	    	
-	    </div>
-	  		</body><br><br>
-		<footer>
-	        <p>&copy; 2023 The Jobs Consultation Centre</p>
-	   	</footer>
-</html>	   	
-		        
+	</header>
+	<!--  
+	<form>
+		<label>View all Consultants</label>
+		<input type="hidden" name="actiontype" value="allConsultants"/>
+		<button type="submit" class="btn btn-info">View</button>
+	</form>
+	-->
+	<p style='color:magenta'> ${message} </p>
+	<br>
+	<table class="table">
+		<thead>
+			<tr class="table-info">
+				<th>Consultant ID</th>
+				<th>Consultants Name</th>
+				<th>Email</th>
+		
+					
+			</tr>		
+		</thead>
+		<tbody>
+			<tag:forEach var="consultant"  items="${consultantList}">
+			<tr class="table-light">
+				<td>${consultant.userID}</td>
+				<td>${consultant.fullName}</td>
+				<td>${consultant.email}</td>
+	
+				
+						
+			</tr>
+			</tag:forEach>
+			
+							
+		</tbody>
+	</table> 
+	
+	</body>
+</html>
