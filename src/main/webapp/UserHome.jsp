@@ -45,23 +45,24 @@
 		    </div>
 		  </div>
 		</nav>
-		<br>
 		</header>
-		<h4>Hello, <%= session.getAttribute( "sessionName" ) %> </h4>
-		<div class="home-body">
-			<main>
-	        <h3>Reach our consultants and get your valued service!</h3>
-	        <p>We provide free consultation services to job seekers planning to work abroad.</p>
-	        <p>If you need advice on job opportunities, please schedule an appointment with our consultants.</p>
-	    	</main>
-	    	<img src="consulting.jpg" width="400" height="300">
-	    	<br><br>
-
-	    	
-	    </div>
-	  		</body><br><br>
+		<section class="bg" id="id">
+			<h4>Hello, <%= session.getAttribute( "sessionName" ) %> </h4>
+				<div class="home-body">
+					<main>
+	        		<h3>Reach our consultants and get your valued service!</h3>
+	        		<p>We provide free consultation services to job seekers planning to work abroad.</p>
+	        		<p>If you need advice on job opportunities, please schedule an appointment with our consultants.</p>
+	    			</main>
+	    			<img src="userhome1.jpg" width="400" height="300">
+	    		</div>
+	    </section>
+	 
 		<footer>
-	        <p>&copy; 2023 The Jobs Consultation Centre</p>
-	   	</footer>
+    		<div>
+        		<span>Copyright © 2023 All Rights Reserved</span>
+     		</div>
+	    </footer>
+	</body>    
 </html>	   	
 		        

@@ -8,30 +8,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/NewFile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-    <div class="container">
-        <h2>Login</h2>
+<div class = "bg-img">
+    <div class="content">
+        <header>Login</header>
         <form action="loginUser" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+            <div class="field">
+            	<span class="fa fa-user"></span>
+                <input type="text" id="username" name="username" placeholder="Username" required>
             </div>
-            <br>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>  
-                
+            <div class="field space">
+            	<span class="fa fa-lock"></span>
+                <input type="password" class="pass-key" placeholder="Password"id="password" name="password" required>  
                 <input type="hidden" name="actiontype" value="login"/>  
             </div>
             <br>
-            <span style="color:red"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></span>
-            <br><br>
-            <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="Register.jsp">Register</a></p>
+            <div class="field">
+                  <input type="submit" value="LOGIN">
+            </div>
+         </form>
+         <br>
+         <div class="signup">
+               Don't have an account?
+               <a href="Register.jsp">Signup Now</a>
+         </div>
                   
     </div>
+</div>    
 </body>
 </html>

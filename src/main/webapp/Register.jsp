@@ -9,40 +9,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/NewFile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
 </head>
 <body>
-    <div class="container">
-        <h2>Registration</h2>
+<div class = "bg-img">
+    <div class="content">
+        <header>Registration</header>
         <p>${feedbackmessage}</p>
         <form action="registerUser" method="POST">
         
-        	<div class="form-group">
-                <label for="fullname">Full Name:</label>
-                <input type="text" id="fullname" name="fullname" required>
+        	<div class="field">
+            	<span class="fa fa-user"></span>
+                <input type="text" id="fullname" name="fullname" placeholder="Full Name" required>
             </div>
             <br>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="field">
+                <span class="fa fa-user"></span>            
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
             <br>
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>     
+            <div class="field">
+                <span class="fa fa-user"></span>            
+                <input type="text" id="username" name="username" placeholder="Username" required>
+            </div>
+            <div class="field space">
+                <span class="fa fa-lock"></span>
+                <input type="password" class="pass-key" placeholder="Password"id="password" name="password" required>  
+                <span class="show">SHOW</span>
+                <input type="hidden" name="actiontype" value="register"/>  
             </div>
             <br>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                
-                <input type="hidden" name="actiontype" value="register"/>
-                
+            <div class="field">
+                  <input type="submit" value="REGISTER">
             </div>
-            <br>
-            <button type="submit">Register</button>
         </form>
-        <p>Already have an account? <a href="Login.jsp">Login</a></p>
-    </div>
+        <br>
+        <div class="signup">
+               Already have an account?
+               <a href="Login.jsp">Login</a>
+         </div>
+	</div>
+</div>
 </body>
 </html>
